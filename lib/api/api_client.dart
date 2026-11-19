@@ -20,9 +20,10 @@ Dio buildDio({
   final dio = Dio(
     BaseOptions(
       baseUrl: baseUrl,
-      connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 10),
-      sendTimeout: const Duration(seconds: 10),
+      // Без VPN до Railway бывает 10–20+ с; 5 с давали ложный «не отвечает».
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(seconds: 30),
+      sendTimeout: const Duration(seconds: 30),
       headers: {'Accept': 'application/json'},
       contentType: Headers.jsonContentType,
       responseType: ResponseType.json,
