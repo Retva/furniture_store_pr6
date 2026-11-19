@@ -80,7 +80,8 @@ class ProductFormScreen extends StatelessWidget {
           onSelected: (scope, id) {
             final allowed = materialsOf(id);
             final current =
-                scope.values['materialIds'] as List<String>? ?? const <String>[];
+                scope.values['materialIds'] as List<String>? ??
+                const <String>[];
             scope.set(
               'materialIds',
               current.where(allowed.containsKey).toList(),

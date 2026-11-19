@@ -224,7 +224,9 @@ void main() {
 
     test('фильтр по категории учитывает несколько категорий товара', () async {
       final repo = LocalProductRepository(network: network);
-      final beds = await repo.find(const ProductQuery(categoryId: '6', size: 50));
+      final beds = await repo.find(
+        const ProductQuery(categoryId: '6', size: 50),
+      );
       expect(beds.items.any((p) => p.name.contains('Диван-кровать')), isTrue);
     });
 

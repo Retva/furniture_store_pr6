@@ -130,7 +130,10 @@ class ApiCrudRepository<T extends Entity, Q extends ListQuery>
 
   @override
   Future<void> restore(String id) => guard(() async {
-    await dio.patch<Map<String, dynamic>>('$_path/$id', data: {'deleted_at': ''});
+    await dio.patch<Map<String, dynamic>>(
+      '$_path/$id',
+      data: {'deleted_at': ''},
+    );
     notifyChanged();
   });
 

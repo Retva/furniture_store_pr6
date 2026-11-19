@@ -137,7 +137,8 @@ class MultiSelectFieldSpec extends FieldSpec {
   @override
   Widget build(BuildContext context, FormScope scope) {
     final current = [
-      for (final id in (scope.values[name] as List<String>? ?? const <String>[]))
+      for (final id
+          in (scope.values[name] as List<String>? ?? const <String>[]))
         if (options.containsKey(id)) id,
     ];
     return FormField<List<String>>(

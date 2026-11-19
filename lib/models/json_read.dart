@@ -53,7 +53,11 @@ class JsonRead {
 
   /// Идентификатор связанной записи: из поля `manufacturerId` или, если
   /// его нет, из вложенного объекта `manufacturer: {"id": …}`.
-  static String refId(Map<String, dynamic> json, String idKey, String objectKey) {
+  static String refId(
+    Map<String, dynamic> json,
+    String idKey,
+    String objectKey,
+  ) {
     if (json[idKey] != null) return id(json[idKey]);
     final nested = json[objectKey];
     return nested is Map ? id(nested['id']) : '';

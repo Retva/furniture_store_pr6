@@ -99,8 +99,18 @@ final List<FurnitureMaterial> seedMaterials = [
     kind: 'Дерево',
     origin: 'Германия',
   ),
-  const FurnitureMaterial(id: '8', name: 'ЛДСП', kind: 'Плита', origin: 'Россия'),
-  const FurnitureMaterial(id: '9', name: 'МДФ', kind: 'Плита', origin: 'Польша'),
+  const FurnitureMaterial(
+    id: '8',
+    name: 'ЛДСП',
+    kind: 'Плита',
+    origin: 'Россия',
+  ),
+  const FurnitureMaterial(
+    id: '9',
+    name: 'МДФ',
+    kind: 'Плита',
+    origin: 'Польша',
+  ),
   const FurnitureMaterial(
     id: '10',
     name: 'Велюр',

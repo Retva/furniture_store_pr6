@@ -73,16 +73,17 @@ class AuthApi {
     ];
   });
 
-  Future<AppUser> updateUserRole(String id, RoleUpdate update) => guard(() async {
-    final response = await _dio.patch<Map<String, dynamic>>(
-      '$_users/$id',
-      data: {
-        'role': update.role,
-        if (update.fullName != null) 'name': update.fullName,
-      },
-    );
-    return AppUser.fromJson(PbApi.userFromPb(response.data!));
-  });
+  Future<AppUser> updateUserRole(String id, RoleUpdate update) =>
+      guard(() async {
+        final response = await _dio.patch<Map<String, dynamic>>(
+          '$_users/$id',
+          data: {
+            'role': update.role,
+            if (update.fullName != null) 'name': update.fullName,
+          },
+        );
+        return AppUser.fromJson(PbApi.userFromPb(response.data!));
+      });
 
   Future<Map<String, int>> stats() => guard(() async {
     const specs = {

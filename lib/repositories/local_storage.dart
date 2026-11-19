@@ -170,8 +170,7 @@ class StorageMigrator {
     return {
         ...old,
         'categoryIds':
-            old['categoryIds'] ??
-            [if (categoryId != null) '$categoryId'],
+            old['categoryIds'] ?? [if (categoryId != null) '$categoryId'],
         'materialIds': old['materialIds'] ?? <String>[],
         'description': [
           if (old['description'] is String) old['description'],

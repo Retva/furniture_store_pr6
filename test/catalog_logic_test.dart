@@ -62,7 +62,9 @@ void main() {
     });
 
     test('фильтр по производителю', () async {
-      final result = await products.find(const ProductQuery(manufacturerId: '7'));
+      final result = await products.find(
+        const ProductQuery(manufacturerId: '7'),
+      );
       expect(result.items.every((p) => p.manufacturerId == '7'), isTrue);
       expect(result.total, 4);
     });

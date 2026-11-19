@@ -80,7 +80,8 @@ class ApiManufacturerRepository
   ApiManufacturerRepository(super.dio)
     : super(
         resource: 'manufacturers',
-        fromJson: (json) => Manufacturer.fromJson(PbApi.manufacturerFromPb(json)),
+        fromJson: (json) =>
+            Manufacturer.fromJson(PbApi.manufacturerFromPb(json)),
         toInput: (m) => PbApi.manufacturerToPb(m.toJson()),
         listParams: _manufacturerListParams,
       );
@@ -114,7 +115,8 @@ class ApiCategoryRepository
   ApiCategoryRepository(super.dio)
     : super(
         resource: 'categories',
-        fromJson: (json) => ProductCategory.fromJson(PbApi.categoryFromPb(json)),
+        fromJson: (json) =>
+            ProductCategory.fromJson(PbApi.categoryFromPb(json)),
         toInput: (c) => PbApi.categoryToPb(c.toJson()),
         listParams: (q) => _basicListParams(q, const ['name']),
       );
@@ -126,7 +128,8 @@ class ApiMaterialRepository
   ApiMaterialRepository(super.dio)
     : super(
         resource: 'materials',
-        fromJson: (json) => FurnitureMaterial.fromJson(PbApi.materialFromPb(json)),
+        fromJson: (json) =>
+            FurnitureMaterial.fromJson(PbApi.materialFromPb(json)),
         toInput: (m) => PbApi.materialToPb(m.toJson()),
         listParams: (q) => _basicListParams(
           q,
@@ -340,7 +343,10 @@ class ApiCustomerRepository extends ApiCrudRepository<Customer, BasicQuery>
     if (cards.isEmpty) {
       await _dio.post<void>(_cardsPath, data: body);
     } else {
-      await _dio.patch<void>('$_cardsPath/${(cards.first as Map)['id']}', data: body);
+      await _dio.patch<void>(
+        '$_cardsPath/${(cards.first as Map)['id']}',
+        data: body,
+      );
     }
   }
 }

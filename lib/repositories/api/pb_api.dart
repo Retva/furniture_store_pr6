@@ -102,7 +102,8 @@ class PbApi {
     if (cardPb != null) {
       out['card'] = {
         'number': cardPb['number'],
-        'discountPercent': cardPb['discount_percent'] ?? cardPb['discountPercent'],
+        'discountPercent':
+            cardPb['discount_percent'] ?? cardPb['discountPercent'],
         'issuedAt': cardPb['issued_at'] ?? cardPb['issuedAt'],
       };
     }

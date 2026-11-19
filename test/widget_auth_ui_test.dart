@@ -18,7 +18,12 @@ Future<AuthNotifier> createAuth({Role role = Role.viewer}) async {
   final auth = AuthNotifier(prefs, AuthApi(Dio()));
   auth.adoptTokensForTest(
     accessToken: 'test-token',
-    user: AppUser(id: '1', username: role.code, fullName: role.label, role: role),
+    user: AppUser(
+      id: '1',
+      username: role.code,
+      fullName: role.label,
+      role: role,
+    ),
   );
   return auth;
 }

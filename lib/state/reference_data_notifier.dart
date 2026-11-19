@@ -119,8 +119,9 @@ class ReferenceDataNotifier extends ChangeNotifier {
   ProductCategory? categoryOf(String id) =>
       id.isEmpty ? null : _categoryList.where((c) => c.id == id).firstOrNull;
 
-  Manufacturer? manufacturerOf(String id) =>
-      id.isEmpty ? null : _manufacturerList.where((m) => m.id == id).firstOrNull;
+  Manufacturer? manufacturerOf(String id) => id.isEmpty
+      ? null
+      : _manufacturerList.where((m) => m.id == id).firstOrNull;
 
   FurnitureMaterial? materialOf(String id) =>
       id.isEmpty ? null : _materialList.where((m) => m.id == id).firstOrNull;

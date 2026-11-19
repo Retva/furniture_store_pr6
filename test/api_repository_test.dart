@@ -88,7 +88,13 @@ Map<String, dynamic> productJson(String id, {String sku = 'DV-1001'}) => {
 };
 
 Map<String, dynamic> page(List<Object> items, {int total = 1, int size = 10}) =>
-    {'items': items, 'page': 1, 'perPage': size, 'totalItems': total, 'totalPages': 1};
+    {
+      'items': items,
+      'page': 1,
+      'perPage': size,
+      'totalItems': total,
+      'totalPages': 1,
+    };
 
 const sofa = Product(
   id: '',
@@ -192,7 +198,9 @@ void main() {
         }
         return json(
           200,
-          page([productJson(filter != null && filter.contains('шкаф') ? '2' : '1')]),
+          page([
+            productJson(filter != null && filter.contains('шкаф') ? '2' : '1'),
+          ]),
         );
       };
 
@@ -242,7 +250,9 @@ void main() {
       auth.adoptTokensForTest(accessToken: 'token-1');
       adapter.handler = (o) async => json(400, {
         'message': 'Ошибка валидации',
-        'data': {'sku': {'message': 'Артикул DV-1001 уже есть у другого товара'}},
+        'data': {
+          'sku': {'message': 'Артикул DV-1001 уже есть у другого товара'},
+        },
       });
 
       final error = await errorOf(() => products.create(sofa));

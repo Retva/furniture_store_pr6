@@ -43,7 +43,8 @@ class LocalCategoryRepository
       : item.copyWith(deletedAt: deletedAt);
 
   @override
-  ProductCategory withId(ProductCategory item, String id) => item.copyWith(id: id);
+  ProductCategory withId(ProductCategory item, String id) =>
+      item.copyWith(id: id);
 
   @override
   Map<String, String> uniquenessErrors(ProductCategory item) => {
