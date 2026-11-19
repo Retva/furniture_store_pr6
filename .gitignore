@@ -17,7 +17,5 @@ Thumbs.db
 # PocketBase: бинарник и локальная база (у каждого студента своя)
 pocketbase/pocketbase
 pocketbase/pocketbase.exe
-pocketbase/cloudflared.exe
 pocketbase/pb_data/
 pocketbase/pb_public/
-pocketbase/tunnel*.log
