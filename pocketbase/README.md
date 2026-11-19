@@ -76,3 +76,29 @@ flutter run -d chrome --web-hostname 127.0.0.1 --web-port 5555 --dart-define=API
 
 Хук `pb_hooks/orders.pb.js`: при создании заказа проверяет остаток на складе
 (конфликт 409), применяет скидку по карте покупателя и списывает `stock`.
+
+## Деплой на Railway (HTTPS для GitHub Pages)
+
+Локальный туннель (cloudflared) нестабилен из‑за VPN/DNS. Railway даёт
+постоянный `https://….up.railway.app` — с ним сайт на github.io логинится без
+смешанного контента.
+
+1. Аккаунт на [railway.app](https://railway.app), **New Project → Deploy from GitHub**
+   (репозиторий `furniture_store_pr6`), root directory: `pocketbase`.
+2. В сервисе: **Variables** → `PORT=8080` (или оставить авто; Dockerfile слушает 8080).
+3. **Volumes → Add Volume**, mount path: `/pb/pb_data` (обязательно, иначе база
+   пропадёт при redeploy).
+4. После деплоя откройте `https://ВАШ-ДОМЕН.up.railway.app/api/health` —
+   должен быть `{"message":"API is healthy.",…}`.
+5. Админка: `https://ВАШ-ДОМЕН.up.railway.app/_/`  
+   Суперпользователь из миграции: `admin@mebeldom.local` / `mebel-admin-8090`.
+6. Seed на облачный API (из папки `pocketbase`):
+
+```bash
+$env:PB_URL="https://ВАШ-ДОМЕН.up.railway.app"; node seed.mjs --reset
+```
+
+7. В GitHub → Settings → Secrets and variables → Actions → Variables:
+   `API_BASE_URL` = `https://ВАШ-ДОМЕН.up.railway.app` (без слэша в конце).
+8. Перезапустите workflow **Deploy to GitHub Pages** — сайт
+   https://retva.github.io/furniture_store_pr6/ начнёт ходить на Railway.
