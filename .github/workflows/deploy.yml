@@ -42,12 +42,11 @@ jobs:
         run: flutter test
 
       - name: Build web
-        env:
-          # Задайте в Settings → Secrets and variables → Actions → Variables.
-          API_BASE_URL: ${{ vars.API_BASE_URL }}
         run: |
           REPO="${{ github.event.repository.name }}"
-          API_BASE_URL="${API_BASE_URL:-https://furniturestorepr6-production.up.railway.app}"
+          # Всегда Railway HTTPS: vars.API_BASE_URL с localhost ломает github.io.
+          API_BASE_URL="https://furniturestorepr6-production.up.railway.app"
+          echo "Building with API_BASE_URL=$API_BASE_URL"
           flutter build web --release \
             --no-wasm-dry-run \
             --base-href "/${REPO}/" \
